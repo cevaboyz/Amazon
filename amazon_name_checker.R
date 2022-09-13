@@ -27,7 +27,7 @@ library(rvest)
 library(stringr)
 
 
-url <- "https://www.amazon.it/dp/B082WSYYCX?FALSE"
+url <- "https://www.amazon.it/dp/B07JVLQ38M?FALSE"
 
 
 test <- read_html(url)
@@ -69,7 +69,7 @@ name_checker <- function(asin){
   
   page <- read_html(url_compositor)
   
-  name <- test %>%
+  name <- page %>%
     html_nodes(xpath= "//*[@id='productTitle']/text()") %>%
     html_text()
   
@@ -79,7 +79,7 @@ name_checker <- function(asin){
   
   data <- table[[3]]
   
-  asin <- unlist(data[6,2])
+  asin <- asin
   
   real_name <- unlist(data[2,2])
   
@@ -89,10 +89,16 @@ name_checker <- function(asin){
   
   final <- cbind(asin,name,real_name,correct_name,sku)
   
+  final_df <<- as.data.frame(final)
+  
+  return(final_df)
+  
+  print("DONE")
+  
 }
 
 
 
-name_raw <- purrr::map(asin, possibly(asin, NA))
+name_raw <- purrr::map(asin, possibly(name_checker, NA))
 
 name_df <- plyr::ldply(name_raw, data.frame)
