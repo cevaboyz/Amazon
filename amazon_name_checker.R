@@ -1,3 +1,16 @@
+library(tidyverse)
+library(tibble)
+library(openxlsx)
+library(gdata)
+library(lubridate)
+library(rvest)
+library(stringr)
+library(dplyr)
+library(purrr)
+
+
+
+
 name_checker <- function(asin){
   
   url_compositor <- paste0("https://www.amazon.it/dp/", asin)
