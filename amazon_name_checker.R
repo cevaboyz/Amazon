@@ -7,7 +7,7 @@ library(rvest)
 library(stringr)
 library(dplyr)
 library(purrr)
-
+library(plyr)
 
 
 
