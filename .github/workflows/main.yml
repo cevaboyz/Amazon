@@ -28,6 +28,7 @@ jobs:
         R -e 'install.packages("stringr")'
         R -e 'install.packages("dplyr")'
         R -e 'install.packages("purrr")'
+        R -e 'install.packages("plyr")'
             
     # Run R script
     - name: Scrape
