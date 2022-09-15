@@ -132,10 +132,10 @@ asin <- c(
   "B0B1QV8TWC"
 )
 
-
+date <- Sys.time()
 
 scrape_raw <- purrr::map(asin, purrr::possibly(name_checker_2, NA))
 
 product_name_df_delay_ua <- plyr::ldply(scrape_raw, data.frame)
 
-write.csv(name_df, file = "data/Amazon Name.csv")
+write.csv(name_df, file = paste0("data/Amazon_name_",date,".csv"))
