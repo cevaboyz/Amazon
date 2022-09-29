@@ -32,6 +32,7 @@ jobs:
         R -e 'install.packages("polite")'
         R -e 'install.packages("xml2")'
         R -e 'install.packages("gt")'
+        R -e 'install.packages("blastula")'
             
     # Run R script
     - name: Scrape with the polite package
