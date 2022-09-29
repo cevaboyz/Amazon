@@ -31,9 +31,18 @@ jobs:
         R -e 'install.packages("plyr")'
         R -e 'install.packages("polite")'
         R -e 'install.packages("xml2")'
+        R -e 'install.packages("gt")'
             
     # Run R script
     - name: Scrape with the polite package
+      env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          EMAIL_CC_1: ${{ secrets.EMAIL_CC_1 }}
+          EMAIL_CC_2: ${{ secrets.EMAIL_CC_2 }}
+          EMAIL_CC_3: ${{ secrets.EMAIL_CC_3 }}
+      
       run: Rscript polite_name_checker.R
 
     # Add new files in data folder, commit along with other modified files, push
