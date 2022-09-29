@@ -1,0 +1,49 @@
+# Hourly scraping
+name: amazonR Polite
+
+# Controls when the action will run.
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  autoscrape:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Load repo and install R
+    steps:
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("tidyverse")'
+        R -e 'install.packages("tibble")'
+        R -e 'install.packages("openxlsx")'
+        R -e 'install.packages("gdata")'
+        R -e 'install.packages("lubridate")'
+        R -e 'install.packages("rvest")'
+        R -e 'install.packages("stringr")'
+        R -e 'install.packages("dplyr")'
+        R -e 'install.packages("purrr")'
+        R -e 'install.packages("plyr")'
+        R -e 'install.packages("polite")'
+        R -e 'install.packages("xml2")'
+            
+    # Run R script
+    - name: Scrape with the polite package
+      run: Rscript polite_name_checker.R
+
+    # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name github-actions
+        git config --local user.email "actions@github.com"
+        git add data/*
+        git commit -am "GH ACTION Autorun $(date)"
+        git push origin main
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions
