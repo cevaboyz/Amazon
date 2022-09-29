@@ -43,7 +43,7 @@ jobs:
         git config --local user.email "actions@github.com"
         git add polite_data/*
         git commit -am "GH ACTION Autorun $(date)"
-        git push origin main --force
+        git push origin polite --force
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
