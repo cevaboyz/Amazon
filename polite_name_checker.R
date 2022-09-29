@@ -1,3 +1,5 @@
+# required libraries ------------------------------------------------------
+library(blastula)
 library(tidyverse)
 library(tibble)
 library(openxlsx)
@@ -10,6 +12,7 @@ library(purrr)
 library(plyr)
 library(polite)
 library(xml2)
+library(gt)
 
 
 ua <-
@@ -157,4 +160,77 @@ scrape_raw <-
 product_name_df_delay_ua <- plyr::ldply(scrape_raw, data.frame)
 
 write.csv(product_name_df_delay_ua,
-          file = paste0("polite_data/Amazon_name_", date, " polite.csv"))
+          file = paste0("polite_data/Amazon_name_", date, ".csv"))
+
+product_name_df_delay_ua_only_fix_needed <-
+  product_name_df_delay_ua[product_name_df_delay_ua$need_fix == "Fix Me Please My Lord", ]
+
+product_name_df_delay_ua_only_fix_needed
+
+
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "asin"] =
+  "INPUT ASIN"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "asin_2"] =
+  "DYNAMIC ASIN"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "title_lower"] =
+  "LIVE NAME NORMALISED"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "chr_len_dynamic"] =
+  "LIVE NAME LENGTH"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "real_name_norm"] =
+  "CORRECT NAME NORMALISED"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "real_name_chr_len"] =
+  "CORRECT NAME LENGTH"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "is_the_same"] =
+  "IS IT THE SAME?"
+colnames(product_name_df_delay_ua_only_fix_needed)[colnames(product_name_df_delay_ua_only_fix_needed) == "need_fix"] =
+  "NEED A FIX"
+tbl_html <-
+  product_name_df_delay_ua_only_fix_needed %>% gt() %>% as_raw_html()
+
+
+#############################
+#############################
+#############################Blastula / GMAIL
+
+
+# read environment variables ----------------------------------------------
+EMAIL_SENDER <- Sys.getenv("EMAIL_SENDER")
+EMAIL_PASSWORD <- Sys.getenv("EMAIL_PASSWORD")
+EMAIL_RECIPIENT <- Sys.getenv("EMAIL_RECIPIENT")
+EMAIL_CC_1 <- Sys.getenv("EMAIL_CC_1")
+EMAIL_CC_2  <- Sys.getenv("EMAIL_CC_2")
+EMAIL_CC_3 <- Sys.getenv("EMAIL_CC_3")
+
+# set gmail credentials ---------------------------------------------------
+credentials <- creds_envvar(
+  user = EMAIL_SENDER,
+  pass_envvar = "EMAIL_PASSWORD",
+  provider = "gmail",
+  host = NULL,
+  port = NULL,
+  use_ssl = TRUE
+)
+
+# compose email -----------------------------------------------------------
+email <- compose_email(
+  body = blocks(tbl_html),
+  footer = "This is a Scheduled Workflow to notify about the Amazon's Product Names that need manual intervention.
+  Contact me for any support",
+  title = "This is a dataframe with all the ASINs provided for the monitoring"
+)
+
+
+
+# send email --------------------------------------------------------------
+smtp_send(
+  email,
+  from = EMAIL_SENDER,
+  to = EMAIL_RECIPIENT,
+  cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3),
+  subject = "Weekly Report About Amazon's Product Name that need a manual fix",
+  credentials = credentials,
+  verbose = TRUE
+)
+
+write.csv(product_name_df_delay_ua,
+          file = paste0("polite_data/Amazon_name_", date, ".csv"))
