@@ -1,0 +1,59 @@
+# Hourly scraping
+name: amazonR Polite Price Checker
+
+# Controls when the action will run.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  autoscrape:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Load repo and install R
+    steps:
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("tidyverse")'
+        R -e 'install.packages("tibble")'
+        R -e 'install.packages("openxlsx")'
+        R -e 'install.packages("gdata")'
+        R -e 'install.packages("lubridate")'
+        R -e 'install.packages("rvest")'
+        R -e 'install.packages("stringr")'
+        R -e 'install.packages("dplyr")'
+        R -e 'install.packages("purrr")'
+        R -e 'install.packages("plyr")'
+        R -e 'install.packages("polite")'
+        R -e 'install.packages("xml2")'
+        R -e 'install.packages("gt")'
+        R -e 'install.packages("blastula")'
+            
+    # Run R script
+    - name: Scrape with the polite package
+      env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          EMAIL_CC_1: ${{ secrets.EMAIL_CC_1 }}
+          EMAIL_CC_2: ${{ secrets.EMAIL_CC_2 }}
+          EMAIL_CC_3: ${{ secrets.EMAIL_CC_3 }}
+      
+      run: Rscript polite_price_checker.R
+
+    # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name github-actions
+        git config --local user.email "actions@github.com"
+        git add polite_price/*
+        git commit -am "GH ACTION Autorun POLITE PRICE $(date)"
+        git push origin main --force
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions
