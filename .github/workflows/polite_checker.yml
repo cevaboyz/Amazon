@@ -4,7 +4,7 @@ name: amazonR Polite Price Checker
 # Controls when the action will run.
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 0 * * 1,4'
 
 jobs:
   autoscrape:
