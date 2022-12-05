@@ -900,6 +900,7 @@ EMAIL_RECIPIENT <- Sys.getenv("EMAIL_RECIPIENT")
 EMAIL_CC_1 <- Sys.getenv("EMAIL_CC_1")
 EMAIL_CC_2  <- Sys.getenv("EMAIL_CC_2")
 EMAIL_CC_3 <- Sys.getenv("EMAIL_CC_3")
+EMAIL_CC_4 <- Sys.getenv("EMAIL_CC_4")
 
 # set gmail credentials ---------------------------------------------------
 credentials <- creds_envvar(
@@ -956,7 +957,7 @@ smtp_send(
   email,
   from = EMAIL_SENDER,
   to = EMAIL_RECIPIENT,
-  cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3),
+  cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3, EMAIL_CC_4),
   subject = "REPORT PERIODICO AMAZON ITALIA > VERIFICA TITOLI PRODOTTI",
   credentials = credentials,
   verbose = TRUE
