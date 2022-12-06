@@ -43,6 +43,7 @@ jobs:
           EMAIL_CC_1: ${{ secrets.EMAIL_CC_1 }}
           EMAIL_CC_2: ${{ secrets.EMAIL_CC_2 }}
           EMAIL_CC_3: ${{ secrets.EMAIL_CC_3 }}
+          EMAIL_CC_4: ${{ secrets.EMAIL_CC_4 }}
       
       run: Rscript polite_name_checker.R
 
