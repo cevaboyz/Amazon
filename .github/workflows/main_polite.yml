@@ -4,7 +4,7 @@ name: amazonR Polite
 # Controls when the action will run.
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 6,18 * * *'
 
 jobs:
   autoscrape:
