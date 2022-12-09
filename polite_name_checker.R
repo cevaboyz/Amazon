@@ -30,7 +30,7 @@ polite_checker_1 <- function(asin) {
       user_agent = ua,
       force = TRUE,
       delay = 10,
-      times = 7,
+      times = 10,
       verbose = TRUE
     )
   info <-
@@ -202,7 +202,9 @@ master_asin <-
     "B08HS4ZSMH",
     "B08HS61FJ5",
     "B07PPC54RD",
-    "B07P35DT "
+    "B07P35DTPJ",
+    "B0BLCXY3J8",
+    "B0BLCZ42BG"
   )
 
 
@@ -439,7 +441,9 @@ master_sku <-
     "9440",
     "9432",
     "9012",
-    "9014"
+    "9014",
+    "16936",
+    "16937"
   )
 
 
@@ -732,29 +736,49 @@ part_5 <-
 
 
 part_6 <- c(
-  'Imetec Intellifast, ferro da stiro a vapore, Tecnologia Intelli System, Impostazione automatica della temperatura, Piastra Ceramic Diamond, Protezione anticalcare, 2400 W, Colpo Vapore 200 g
-',
+  "Imetec Intellifast, ferro da stiro a vapore, Tecnologia Intelli System, Impostazione automatica della temperatura, Piastra Ceramic Diamond, Protezione anticalcare, 2400 W, Colpo Vapore 200 g",
   
-  'Imetec Activation Ferro da Stiro a Vapore, Piastra Scorrevole in Ceramica e Tormalina, Colpo Vapore 200 g, Tecnologia Anticalcare ZeroCalc, Antigoccia, Eco, 2400 W
-',
+  "Imetec Activation Ferro da Stiro a Vapore, Piastra Scorrevole in Ceramica e Tormalina, Colpo Vapore 200 g, Tecnologia Anticalcare ZeroCalc, Antigoccia, Eco, 2400 W"
+)
+
+part_7 <- c(
+  "Imetec ZeroCalc KF1 100 Kit 3 filtri anticalcare per Ferri da Stiro Imetec ZeroCalc Pro Ceramic PS2 2400, PS2 2000, PS2 2200, Intellivapor PS3 3000, Imetec Onda, Ricambi Originali",
   
-  'Imetec ZeroCalc KF1 100 Kit 3 filtri anticalcare per Ferri da Stiro Imetec ZeroCalc Pro Ceramic PS2 2400, PS2 2000, PS2 2200, Intellivapor PS3 3000, Imetec Onda, Ricambi Originali
-',
-  'Imetec Rapidvapor Ferro da Stiro Generatore di Vapore, Piastra Fluid Ceramic a Rapido Riscaldamento, Leggero, Sistema di Pulizia Calc Clean, Colpo Vapore 240 g, 2400 W, 5 Bar Pump
-',
-  'Imetec Onda F2, Ferro da Stiro a Vapore con Piastra a Onde Scorrevole Brevettata, 2400 W, Colpo di Vapore 200g, Serbatoio 300 ml, Tripla Protezione Anticalcare
-',
-  'Imetec Onda P2 Ferro da Stiro Generatore di Vapore, Piastra a Onde Scorrevole Brevettata, 2400W, Colpo Vapore 300 g, Serbatoio 2,5L, 3 Filtri con Ioni di Argento, Tecnologia No Stop Vapor
-',
-  'Imetec ZeroCalc Z1 2800 Ferro da Stiro con Tecnologia Anticalcare, Piastra Ceramica ad Alta Scorrevolezza, Tecnologia a Risparmio Energetico, 2200 W, Colpo Vapore 130 g
-',
-  'Imetec ZeroCalc PS1 2000 Ferro da Stiro Compatto, 3.8 BAR, Tecnologia Anticalcare e a Risparmio Energetico, Ricarica Continua, Vapore Pronto in 1 Minuto, 2100 W, Serbatoio XL da 1 L
-'
+  "Imetec Rapidvapor Ferro da Stiro Generatore di Vapore, Piastra Fluid Ceramic a Rapido Riscaldamento, Leggero, Sistema di Pulizia Calc Clean, Colpo Vapore 240 g, 2400 W, 5 Bar Pump"
 )
 
 
+part_8 <- c(
+  "Imetec Onda F2, Ferro da Stiro a Vapore con Piastra a Onde Scorrevole Brevettata, 2400 W, Colpo di Vapore 200g, Serbatoio 300 ml, Tripla Protezione Anticalcare",
+  "Imetec Onda P2 Ferro da Stiro Generatore di Vapore, Piastra a Onde Scorrevole Brevettata, 2400W, Colpo Vapore 300 g, Serbatoio 2,5L, 3 Filtri con Ioni di Argento, Tecnologia No Stop Vapor"
+)
+
+
+part_9 <-
+  c(
+    "Imetec ZeroCalc Z1 2800 Ferro da Stiro con Tecnologia Anticalcare, Piastra Ceramica ad Alta Scorrevolezza, Tecnologia a Risparmio Energetico, 2200 W, Colpo Vapore 130 g",
+    "Imetec ZeroCalc PS1 2000 Ferro da Stiro Compatto, 3.8 BAR, Tecnologia Anticalcare e a Risparmio Energetico, Ricarica Continua, Vapore Pronto in 1 Minuto, 2100 W, Serbatoio XL da 1 L"
+  )
+
+
+part_10 <-
+  c(
+    "Imetec Adapto Elegance, Plaid Riscaldabile, Coperta Elettrica, 180x140 cm Tessuto Morbido, Risparmio Energetico, Tecnologia Adapto, Rapido Riscaldamento, 6 Temperature, Lavabile, Beige",
+    "Imetec Adapto Grand Luxe, Plaid Riscaldabile, Coperta Elettrica, 180x140 cm Tessuto Morbido, Risparmio Energetico, Tecnologia Adapto, Rapido Riscaldamento, 6 Temperature, Lavabile, Grigio"
+  )
+
+
 master_titles_correct <-
-  c(master_title, part_2, part_3, part_4, part_5, part_6)
+  c(master_title,
+    part_2,
+    part_3,
+    part_4,
+    part_5,
+    part_6,
+    part_7,
+    part_8,
+    part_9,
+    part_10)
 
 
 master_data_sheet <-
@@ -776,6 +800,7 @@ scrape_raw <-
   purrr::map(master_asin, purrr::possibly(polite_checker_1, NA))
 
 product_name_df_delay_ua <- plyr::ldply(scrape_raw, data.frame)
+
 
 write.csv(product_name_df_delay_ua,
           file = paste0("polite_data/Amazon_name_", date, ".csv"))
@@ -801,10 +826,11 @@ results$title_lower <- tolower(trimws(results$title_lower))
 
 
 ##performing the same steps for the hardcorded data minus the gsub for the accents, it was already removed
-results$master_titles_correct <- gsub("'", "", results$title_lower)
+results$master_titles_correct <-
+  gsub("'", "", results$master_titles_correct)
 
 results$master_titles_correct <-
-  tolower(trimws(results$title_lower))
+  tolower(trimws(results$master_titles_correct))
 
 #generate the column with the test if the live version and the hardcorded version are the same or they need a fix
 results$test_names <-
@@ -814,7 +840,7 @@ results$test_names <-
 
 ##reordering df
 
-results <- results[, c(1, 2, 3, 4, 11, 12)]
+#results <- results[, c(1, 2, 3, 4, 11, 12)]
 
 results <- na.omit(results)
 
@@ -838,42 +864,51 @@ results$test_chr_length_logical <-
 
 results$test_names_logical <- as.logical(results$test_names)
 
+results <- results[, c(10, 2, 1, 15, 3, 4, 11, 13, 12, 14)]
 
+results <- na.omit(results)
 
-results$test_final <-
+##Renaming the Columns
+
+colnames(results)[1] <- "SKU PRODOTTO"
+colnames(results)[2] <- "ASIN LIVE AMAZON"
+colnames(results)[3] <- "ASIN FORNITO TENACTA"
+colnames(results)[4] <-
+  "L'ASIN LIVE SU AMAZON è UGUALE ALL'ASIN FORNITO TENACTA?"
+colnames(results)[5] <- "NOME PRODOTTO LIVE AMAZON"
+colnames(results)[6] <-
+  "LUNGHEZZA NOME PRODOTTO LIVE SU AMAZON"
+colnames(results)[7] <- "NOME PRODOTTO UFFICIALE FORNITO DA TENACTA"
+colnames(results)[8] <- "LUNGHEZZA NOME PRODOTTO FORNITO DA TENACTA"
+colnames(results)[9] <-
+  "IL NOME PRODOTTO LIVE AMAZON è UGUALE AL NOME PRODOTTO UFFICIALE TENACTA?"
+colnames(results)[10] <-
+  "LA LUNGHEZZA DEL NOME PRODOTTO LIVE AMAZON è UGUALE ALLA LUNGHEZZA DEL NOME UFFICIALE TENACTA?"
+
+##FINAL CHECK
+results$results <-
   ifelse(
-    results$test_asin_logical == TRUE &
-      results$test_chr_length_logical == TRUE &
-      results$test_names_logical == TRUE,
+    results$`L'ASIN LIVE SU AMAZON è UGUALE ALL'ASIN FORNITO TENACTA?` == "TRUE" &
+      results$`LA LUNGHEZZA DEL NOME PRODOTTO LIVE AMAZON è UGUALE ALLA LUNGHEZZA DEL NOME UFFICIALE TENACTA?` == "TRUE" &
+      results$`IL NOME PRODOTTO LIVE AMAZON è UGUALE AL NOME PRODOTTO UFFICIALE TENACTA?` == "TRUE",
     "TRUE",
     "NEED FIX"
   )
 
+colnames(results)[11] <- "QUESTO ASIN RICHIEDE UNA CORREZIONE"
+
+results$LINK <-
+  paste0("https://www.amazon.it/dp/", results$`ASIN FORNITO TENACTA`)
+
 #test_duplicates <- results[!duplicated(results$master_asin), ]
+
+duplicates_row <- results[duplicated(results$`ASIN LIVE AMAZON`), ]
 
 result_raw <- results
 
 
-
-results <- results[, c(1, 2, 10, 3, 5, 12, 4, 7, 11, 13)]
-
-colnames(results)[1] <- "ASIN CORRETTI"
-colnames(results)[2] <- "ASIN LIVE"
-colnames(results)[3] <- "ASIN CORRETTI uguale a ASIN LIVE?"
-colnames(results)[4] <- "NOME PRODOTTO LIVE"
-colnames(results)[5] <- "NOME PRODOTTO CORRETTO"
-colnames(results)[6] <-
-  "NOME PRODOTTO LIVE uguale a NOME PRODOTTO CORRETTO?"
-colnames(results)[7] <- "LUNGHEZZA NOME PRODOTTO LIVE"
-colnames(results)[8] <- "LUNGHEZZA NOME PRODOTTO CORRETTO"
-colnames(results)[9] <-
-  "LUNGHEZZA NOME PRODOTTO LIVE uguale a LUNGHEZZA NOME PRODOTTO CORRETTO"
-colnames(results)[10] <-
-  "LE TRE CONDIZIONI SONO TRUE? SE SI TRUE ALTRIMENTI FALSE"
-
-
 final_results <-
-  results %>% filter(results$`LE TRE CONDIZIONI SONO TRUE? SE SI TRUE ALTRIMENTI FALSE` == FALSE)
+  results %>% filter(results$`QUESTO ASIN RICHIEDE UNA CORREZIONE` == "NEED FIX")
 
 
 
@@ -900,7 +935,6 @@ EMAIL_RECIPIENT <- Sys.getenv("EMAIL_RECIPIENT")
 EMAIL_CC_1 <- Sys.getenv("EMAIL_CC_1")
 EMAIL_CC_2  <- Sys.getenv("EMAIL_CC_2")
 EMAIL_CC_3 <- Sys.getenv("EMAIL_CC_3")
-EMAIL_CC_4 <- Sys.getenv("EMAIL_CC_4")
 
 # set gmail credentials ---------------------------------------------------
 credentials <- creds_envvar(
@@ -915,24 +949,12 @@ credentials <- creds_envvar(
 # compose email -----------------------------------------------------------
 
 if (n_row_final_results == 0) {
-  email <- compose_email(
-    body = "AMAZON ITALIA
-
-    TUTTI gli asin forniti per la verifica sono CORRETTI.
-
-    L'elenco di ASIN compresi nel sistema di controllo è reperibile qui:
-
-    https://github.com/cevaboyz/Amazon/blob/main/titoli_corretti_amazon.xlsx
-
-
-    DISCLAIMER: Questo sistema automatizzato non sostituisce la verifica periodica.
-    Può essere soggetto ad errori e malfunzionamenti, non basarsi solamente su questo sistema.
-    ",
-    footer = "Questo è un elenco generato automaticamente degli ASIN che richiedono una verifica del Product Title. , si ricorda che questo sistema non assicura il 100% di sicurezza ed affidabilità, si richiede quindi un controllo manuale periodico che effettivamente gli ASIN ed i loro Product Titles siano corretti. Per Ulteriori informazioni contattare lo sviluppatore.",
-    title = "AMAZON ITALIA: TUTTI I TITOLI PRODOTTO SONO CORRETTI"
+  write.csv(
+    as.data.frame(n_row_final_results),
+    file = paste0("polite_data/Amazon_name_log_corretti", date, ".csv")
   )
   
-} else{
+} else {
   email <- compose_email(body = blocks(tbl_html),
                          footer = "Questo è un elenco generato automaticamente degli ASIN che richiedono una verifica del Product Title, si ricorda che questo sistema non assicura il 100% di sicurezza ed affidabilità, si richiede quindi un controllo manuale periodico che effettivamente gli ASIN ed i loro Product Titles siano corretti. Per Ulteriori informazioni contattare lo sviluppatore.",
                          title = "AMAZON ITALIA: TITOLI PRODOTTO CHE RICHIEDONO UNA VERIFICA")
@@ -957,7 +979,7 @@ smtp_send(
   email,
   from = EMAIL_SENDER,
   to = EMAIL_RECIPIENT,
-  cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3, EMAIL_CC_4),
+  cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3),
   subject = "REPORT PERIODICO AMAZON ITALIA > VERIFICA TITOLI PRODOTTI",
   credentials = credentials,
   verbose = TRUE
