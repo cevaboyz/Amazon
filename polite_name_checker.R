@@ -897,8 +897,8 @@ results$results <-
 
 colnames(results)[11] <- "QUESTO ASIN RICHIEDE UNA CORREZIONE"
 
-results$LINK <-
-  paste0("https://www.amazon.it/dp/", results$`ASIN FORNITO TENACTA`)
+#results$LINK <-
+  #paste0("https://www.amazon.it/dp/", results$`ASIN FORNITO TENACTA`)
 
 #test_duplicates <- results[!duplicated(results$master_asin), ]
 
