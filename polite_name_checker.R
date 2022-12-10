@@ -898,11 +898,11 @@ results$results <-
 colnames(results)[11] <- "QUESTO ASIN RICHIEDE UNA CORREZIONE"
 
 #results$LINK <-
-  #paste0("https://www.amazon.it/dp/", results$`ASIN FORNITO TENACTA`)
+#paste0("https://www.amazon.it/dp/", results$`ASIN FORNITO TENACTA`)
 
 #test_duplicates <- results[!duplicated(results$master_asin), ]
 
-duplicates_row <- results[duplicated(results$`ASIN LIVE AMAZON`), ]
+duplicates_row <- results[duplicated(results$`ASIN LIVE AMAZON`),]
 
 result_raw <- results
 
@@ -935,6 +935,7 @@ EMAIL_RECIPIENT <- Sys.getenv("EMAIL_RECIPIENT")
 EMAIL_CC_1 <- Sys.getenv("EMAIL_CC_1")
 EMAIL_CC_2  <- Sys.getenv("EMAIL_CC_2")
 EMAIL_CC_3 <- Sys.getenv("EMAIL_CC_3")
+EMAIL_CC_4 <- Sys.getenv("EMAIL_CC_4")
 
 # set gmail credentials ---------------------------------------------------
 credentials <- creds_envvar(
@@ -959,31 +960,17 @@ if (n_row_final_results == 0) {
                          footer = "Questo è un elenco generato automaticamente degli ASIN che richiedono una verifica del Product Title, si ricorda che questo sistema non assicura il 100% di sicurezza ed affidabilità, si richiede quindi un controllo manuale periodico che effettivamente gli ASIN ed i loro Product Titles siano corretti. Per Ulteriori informazioni contattare lo sviluppatore.",
                          title = "AMAZON ITALIA: TITOLI PRODOTTO CHE RICHIEDONO UNA VERIFICA")
   
-  
-  
+  # send email --------------------------------------------------------------
+  smtp_send(
+    email,
+    from = EMAIL_SENDER,
+    to = EMAIL_RECIPIENT,
+    cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3, EMAIL_CC_4),
+    subject = "REPORT PERIODICO AMAZON ITALIA > VERIFICA TITOLI PRODOTTI",
+    credentials = credentials,
+    verbose = TRUE
+  )
 }
-
-
-
-# email <- compose_email(
-#   body = blocks(tbl_html),
-#   footer = "This is a Scheduled Workflow to notify about the Amazon's Product Names that need manual intervention.
-#   Contact me for any support",
-#   title = "This is a dataframe with all the ASINs provided for the monitoring"
-# )
-#
-
-
-# send email --------------------------------------------------------------
-smtp_send(
-  email,
-  from = EMAIL_SENDER,
-  to = EMAIL_RECIPIENT,
-  cc = c(EMAIL_CC_1, EMAIL_CC_2, EMAIL_CC_3),
-  subject = "REPORT PERIODICO AMAZON ITALIA > VERIFICA TITOLI PRODOTTI",
-  credentials = credentials,
-  verbose = TRUE
-)
 
 write.csv(results,
           file = paste0("polite_data/Amazon_name_results_logs_", date, ".csv"))
