@@ -1978,6 +1978,17 @@ tbl_html <-
   final_results %>% gt() %>% as_raw_html()
 
 
+
+
+
+##Add the temp file to attach with the mail
+
+write.csv(final_results, paste0("Titoli_da_Correggere", format(date, "%d-%b-%Y %H.%M"), ".csv"))
+
+file_path <- paste0("Titoli_da_Correggere", format(date, "%d-%b-%Y %H.%M"), ".csv")
+
+
+
 #############################
 #############################
 #############################Blastula / GMAIL
@@ -2004,18 +2015,21 @@ credentials <- creds_envvar(
 # compose email -----------------------------------------------------------
 
 if (n_row_final_results == 0) {
-  write.csv(
-    as.data.frame(n_row_final_results),
-    file = paste0("polite_data/Amazon_name_log_corretti", date, ".csv")
-  )
-  
-} else {
-  email <- compose_email(body = blocks(tbl_html),
-                         footer = "Questo è un elenco generato automaticamente degli ASIN che richiedono una verifica del Product Title, si ricorda che questo sistema non assicura il 100% di sicurezza ed affidabilità, si richiede quindi un controllo manuale periodico che effettivamente gli ASIN ed i loro Product Titles siano corretti. Per Ulteriori informazioni contattare lo sviluppatore.",
-                         title = "AMAZON ITALIA: TITOLI PRODOTTO CHE RICHIEDONO UNA VERIFICA E MODIFICA")
-  
-  
-  
+    write.csv(
+        as.data.frame(n_row_final_results),
+        file = paste0("logs/Amazon_name_log_corretti", date, ".csv")
+    )
+    
+} else{
+    email <-
+        compose_email(body = blocks(tbl_html),
+                      footer = "Questo è un elenco generato automaticamente degli ASIN che richiedono una verifica del Product Title, si ricorda che questo sistema non assicura il 100% di sicurezza ed affidabilità, si richiede quindi un controllo manuale periodico che effettivamente gli ASIN ed i loro Product Titles siano corretti. Per Ulteriori informazioni contattare lo sviluppatore.",
+                      title = "AMAZON ITALIA: TITOLI PRODOTTO CHE RICHIEDONO UNA VERIFICA E CORREZIONE")
+    
+    email <-
+        email %>% add_attachment(
+            file = file_path
+             )
 }
 
 
