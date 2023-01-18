@@ -1065,7 +1065,7 @@ master_titles_correct <- c(
   "Bellissima Imetec GT15 100 Arricciacapelli, Ricci Brillanti e Definiti, Diametro 19 mm, Rivestimento in Ceramica, Riscaldamento Rapido, Pronto all'Uso",
   "Bellissima Imetec GT15 200 Ferro Arricciacapelli con Rivestimento in Ceramica, Forma Conica, Controllo della Temperatura",
   "Bellissima imetec Intellisense B24 100 piastra intelligente, capelli lisci o mossi, protetti senza calore eccessivo, temperatura automatica su misura per tutti i capelli, rivestimento in ceramica",
-  "Bellissima Imetec Kit Bellezza Capelli con Asciugacapelli Professionale, Tecnologia Ceramica e Cheratina e Piastra Lisciante a Vapore, Rivestimento in Ceramica e Cheratina",
+  "Bellissima Imetec Kit Bellezza Capelli con Asciugacapelli Professionale, Tecnologia Ceramica e Cheratina e Piastra Lisciante a Vapore, Rivestimento in Ceramica e Cheratina, Idea Regalo",
   "Bellissima Imetec Magic Straight Brush PB11 100 Spazzola Elettrica Lisciante, 3 Lati Esterni Riscaldati, Spegnimento automatico, Tecnologia a Ioni, Ceramica, 160 C°- 210°C",
   "Bellissima Imetec My Pro Creativity Infrared B8 200, piastra lisciante, tecnologia raggi infrarossi, rivestimento in ceramica e cheratina, 11 livelli di temperatura da 130 °C a 230 °C, cavo 1,8 m",
   "Bellissima Imetec My Pro Revolution BHS4 1100, Spazzola ad Aria Calda, Asciuga e Modella, Rotazione Automatica a Doppio Verso, 2 Spazzole da 40 e 50 mm, Ionizzatore, 1000 W, Rivestimento in Ceramica",
