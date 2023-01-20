@@ -1130,7 +1130,7 @@ master_titles_correct <- c(
   "Imetec Succovivo Pro 2000 Estrattore di Succo Professionale a Freddo, Spremitura Lenta 48 Giri/Min, 2 Filtri per Succhi, Accessorio per Granite e Sorbetti, Kit per Maschere Bellezza, con Ricettario",
   "Imetec Succovivo SJ4 1300 Estrattore di Succo Professionale a Freddo, Spremitura Lenta 50 Giri/Min, Filtro per Succhi, Accessorio per Granite e Sorbetti, pulizia in 2 minuti",
   "Imetec Tosta&Griglia, Tostiera elettrica, piastre XL per preparare 3 toast alla volta, compatta, riponibile in verticale, 800 W, spie di funzionamento",
-  "Imetec TostaMaxi Tostapane, 2 Fessure Extralarge e Pinze Apribili per Toast Extrafarciti, 10 livelli di doratura, Timer con Autospegnimento, Cassetto Raccoglibriciole, 600 W",
+  "Imetec TostaMaxi Tostapane, 2 Fessure Extralarge e Pinze Apribili per Toast Extrafarciti, 10 livelli di doratura, Timer con Autospegnimento, Cassetto Raccoglibriciole, 600 Watt",
   "Imetec TritaCompact Tritatutto, Lame in Acciaio Inox, Capienza Contenitore 400 ml, Funzionamento a Pressione, Compatto, 350 W",
   "Imetec TritaMax, Tritatutto, 4 Lame in Acciaio Inox, Capiente Contenitore 600 ml, Accessorio Frusta per Salse e Panna Montata, 2 velocità, 500 Watt",
   "Imetec Tritapiù Tritatutto, 4 Lame in Acciaio Inox, Capiente Contenitore 600 ml, 18.000 Giri/min, Funzionamento a Pressione, 1000 W, Materiali BPA Free",
