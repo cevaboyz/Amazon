@@ -1139,7 +1139,7 @@ master_titles_correct <- c(
   "Bellissima Imetec Kit Testine di Ricambio Face Cleansing per Pelli Normali e Pelli Sensibili, 4 Diverse Testine per Detergere, Massaggiare, Levigare e Idratare La Pelle",
   "Imetec Adapto Elegance, Plaid riscaldabile, Coperta elettrica, 180 x 140 cm, tessuto morbido Velvet Double Face, Risparmio energetico, Tecnologia adapto, Rapido riscaldamento, 6 temperature, Lavabile",
   "Imetec Adapto Grand Luxe, Plaid riscaldabile, Coperta elettrica, 180 x 140 cm, tessuto morbido Peluche Sherpa, Risparmio energetico, Tecnologia Adapto, Rapido riscaldamento, 6 temperature, Lavabile",
-  "Imetec Adapto velvet jacquard plaid riscaldabile, coperta elettrica 140x180 cm tessuto morbido, basso consumo, tecnologia adapto, dispositivo di sicurezza, rapido riscaldamento, 6 temperature, lavabile",
+  "Imetec Adapto velvet jacquard plaid riscaldabile, coperta elettrica 140x180 cm tessuto morbido, basso consumo, tecnologia adapto, tecnologia di sicurezza, rapido riscaldamento, 6 temperature, lavabile",
   "Imetec adapto velvet square plaid riscaldabile, coperta elettrica 150x95 cm tessuto morbido, basso consumo, tecnologia adapto, dispositivo di sicurezza, rapido riscaldamento, 6 temperature, lavabile",
   "imetec adapto velvet tartan plaid riscaldabile con tasca mani e piedi, coperta elettrica 150x110 cm, basso consumo, tecnologia adapto, sicuro, rapido riscaldamento, 6 temperature, lavabile",
   "Imetec Adapto velvet tartan plaid riscaldabile, coperta elettrica 160x120 cm tessuto morbido, basso consumo, tecnologia adapto, dispositivo di sicurezza, rapido riscaldamento, 6 temperature, lavabile",
