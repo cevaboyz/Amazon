@@ -1984,7 +1984,7 @@ tbl_html <-
 ##Add the temp file to attach with the mail
 
 #write.csv(final_results, paste0("Titoli_da_Correggere", format(date, "%d-%b-%Y %H.%M"), ".csv"))
-write.csv(final_results, "titoli_da_correggere.csv"))
+write.csv(final_results, "titoli_da_correggere.csv")
 file_path <- "titoli_da_corregere.csv"
 #file_path <- paste0("Titoli_da_Correggere", format(date, "%d-%b-%Y %H.%M"), ".csv")
 
